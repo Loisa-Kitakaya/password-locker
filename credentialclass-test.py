@@ -1,11 +1,6 @@
-# create test for class Users
 
-# imports
 import unittest
 from credentialclass import Credentials
-
-# create unittest subclass
-
 
 class TestForClassUsers(unittest.TestCase):
 
@@ -21,60 +16,26 @@ class TestForClassUsers(unittest.TestCase):
     def test_if_can_save(self):
 
         # run test case
-        self.new_profile.save_user_profile()
-        self.assertEqual(len(Credentials.profile_database), 1)
+        self.new_profile.save_user_profile("twitter", "loisaK", "loisa123")
 
-    """testing if user profile can be deleted"""
+        file = open("userprofiles.txt", "r")
+        data = file.readline()
 
-    def test_if_can_delete(self):
+        self.assertEqual(data, "twitter-loisaK-loisa123\n")
 
-        # run test case
-        self.new_profile.save_user_profile()
-        self.new_profile.delete_user_profile()
-        self.assertEqual(len(Credentials.profile_database), 0)
-
-    """testing if can write user profile to text file"""
-
-    def test_if_can_write_file(self):
-
-        # run test case
-        self.new_profile.save_user_profile()
-        self.new_profile.write_user_profile_to_file()
-
-        # open file
-        file = open("userprofile.txt", "r")
-
-        entry = file.readline()
-
-        print(entry)
-
-        # close file
         file.close()
 
-    """testing if can read user profile from text file"""
+    """testing to find user profile by account"""
 
-    def test_if_can_read_file(self):
+    def test_if_can_find_profile(self):
 
-        # run test case
-        self.new_profile.save_user_profile()
-        self.new_profile.write_user_profile_to_file()
+        self.new_profile.save_user_profile("twitter", "loisaK", "loisa123")
+        self.account_name = "twitter"
+        file = open("userprofiles.txt", "r")
+        data = file.read()
 
-        # open file
-        file = open("userprofile.txt", "r")
+        self.assertTrue(data)
 
-        entry = file.readline()
-        word_in_entry = entry.split()
-
-        for word in word_in_entry:
-
-            if word == "twitter" or word == "loisaK" or word == "loisa123":
-
-                return word
-            else:
-
-                continue
-
-        # close file
         file.close()
 
     """clean up after test"""
@@ -83,7 +44,6 @@ class TestForClassUsers(unittest.TestCase):
 
         # deleting our object instances
         Credentials.profile_database = []
-
 
 if __name__ == "__main__":
 

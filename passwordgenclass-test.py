@@ -1,6 +1,3 @@
-# create test for class PasswordGenerator
-
-# imports
 import unittest
 from passwordgenclass import PasswordGenerator
 

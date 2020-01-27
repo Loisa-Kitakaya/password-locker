@@ -1,8 +1,7 @@
-# make imports
 import secrets
 import string
 
-# create class
+
 class PasswordGenerator:
 
     """method to generate random password"""

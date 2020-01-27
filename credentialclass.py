@@ -1,5 +1,4 @@
-# create class
-
+import re
 
 class Credentials:
 
@@ -18,34 +17,57 @@ class Credentials:
 
     def save_user_profile(self):
 
-        Credentials.profile_database.append(self)
+        file = open("userprofiles.txt", "a+")
 
-    """method to delete user information"""
+        file.write(" | ")
+        file.write(
+            self.account
+            + " - "
+            + self.account
+            + " username: "
+            + self.profile_name
+            + " - "
+            + self.account
+            + " username: "
+            + self.profile_password
+        )
+        file.write(" | ")
 
-    def delete_user_profile(self):
-
-        Credentials.profile_database.remove(self)
-
-    """method to write list to a textfile"""
-
-    def write_user_profile_to_file(self):
-
-        # opening the file
-        file = open("userprofile.txt", "w")
-
-        file.write(str(Credentials.profile_database))
-
-        # closing the file
         file.close()
 
-    """method to read list from a text file"""
+    """method to view user information"""
 
-    def read_user_profile_from_file(self):
+    def view_user_profile(self):
 
-        # opening the file
-        file = open("userprofile.txt", "r")
+        file = open("userprofiles.txt", "r")
+        data = file.readline()
 
-        file.readline()
-
-        # closing the file
         file.close()
+
+        return data
+
+    """method to view user profiles based on account"""
+
+    def view_user_profile_on_account(self, account_name):
+
+        self.account_name = account_name
+
+        try:
+            file = open("userprofiles.txt", "r")
+            data = file.read()
+
+            for search in data.split():
+
+                if self.account_name in search:
+    
+                    return search
+
+            file.close()
+
+        except FileNotFoundError:
+            show = "No such file or directory!"
+            return show
+
+        else:
+            show = "No such file or directory!"
+            return show
