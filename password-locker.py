@@ -1,4 +1,6 @@
 import getpass
+import time
+import os
 from userclass import Users
 from credentialclass import Credentials
 from passwordgenclass import PasswordGenerator
@@ -7,6 +9,10 @@ from passwordgenclass import PasswordGenerator
 class PasswordLocker:
 
     """Welcome messages"""
+
+    command_clear = "clear"
+
+    os.system(command_clear)
 
     print("WELCOME TO PASSWORD-LOCKER!")
     print("A safe place for all your online profiles")
