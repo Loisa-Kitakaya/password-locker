@@ -33,6 +33,24 @@ class TestForClassUsers(unittest.TestCase):
         self.new_user.delete_user_information()
         self.assertEqual(len(Users.user_database), 0)
 
+    """testing if can write user profile to text file"""
+
+    def test_if_can_write_file(self):
+
+        # run test case
+        self.new_user.save_user_information()
+        self.new_user.write_user_info_to_file()
+
+        # open file
+        file = open("userinfo.txt", "r")
+
+        entry = file.readline()
+
+        print(entry)
+
+        # close file
+        file.close()
+
     """clean up after test"""
 
     def tearDown(self):
