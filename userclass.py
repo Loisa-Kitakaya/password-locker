@@ -34,3 +34,15 @@ class Users:
 
         # closing the file
         file.close()
+
+    """method to read list from a text file"""
+
+    def read_user_info_from_file(self):
+
+        # opening the file
+        file = open("userinfo.txt", "r")
+
+        file.readline()
+
+        # closing the file
+        file.close()
