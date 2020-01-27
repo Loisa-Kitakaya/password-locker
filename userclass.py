@@ -1,5 +1,5 @@
 # create class
-class Users(object):
+class Users:
 
     # database to store all user information
     user_database = []
