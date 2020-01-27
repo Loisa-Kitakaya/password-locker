@@ -19,3 +19,9 @@ class Credentials:
     def save_user_profile(self):
 
         Credentials.profile_database.append(self)
+
+    """method to delete user information"""
+
+    def delete_user_profile(self):
+
+        Credentials.profile_database.remove(self)
