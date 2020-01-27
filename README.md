@@ -4,7 +4,7 @@ This is a python CLI application that enables the user to store their passwords 
 
 ## Codebeat Badge
 
-[![codebeat badge](https://codebeat.co/badges/88604aec-bf19-49f1-bb98-a9b9e0f17fab)](https://codebeat.co/projects/github-com-loisa-kitakaya-password-locker-master)
+[![codebeat badge](https://codebeat.co/badges/ec605ecb-91ab-468d-bb92-6e7a44da32b8)](https://codebeat.co/projects/github-com-loisa-kitakaya-password-locker-master)
 
 ## Operating
 
