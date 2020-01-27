@@ -7,19 +7,15 @@ from passwordgenclass import PasswordGenerator
 
 
 class PasswordLocker:
-
-    """Welcome messages"""
-
-    command_clear = "clear"
-
-    os.system(command_clear)
-
-    print("WELCOME TO PASSWORD-LOCKER!")
-    print("A safe place for all your online profiles")
-
     def main():
 
         while True:
+
+            """Welcome messages"""
+            os.system("clear")
+
+            print("WELCOME TO PASSWORD-LOCKER!")
+            print("A safe place for all your online profiles")
 
             print("")
             print("Main menu!")
@@ -33,6 +29,8 @@ class PasswordLocker:
 
             # condition if
             if begin == "1":
+                os.system("clear")
+
                 print("\nWelcome back!")
                 print("Enter your details to login...")
 
@@ -45,6 +43,8 @@ class PasswordLocker:
                 file.close()
 
                 if user_name in data and user_password in data:
+
+                    os.system("clear")
 
                     while True:
 
@@ -65,7 +65,6 @@ class PasswordLocker:
                                 view_profile = Credentials.view_user_profile(
                                     profile_find
                                 )
-                                print("")
                                 print(view_profile)
 
                             else:
@@ -117,6 +116,8 @@ class PasswordLocker:
                     continue
 
             elif begin == "2":
+                os.system("clear")
+
                 print("\nDon't have an account yet?")
                 print("Enter a username for your new account.")
                 user_name = input("\nuser_name>>> ")
