@@ -84,6 +84,7 @@ class PasswordLocker:
                                     profile_find
                                 )
                                 print("")
+                                print("Your saved profiles: \n")
                                 print(view_profile)
 
                             else:
