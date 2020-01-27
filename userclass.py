@@ -21,4 +21,4 @@ class Users:
 
     def delete_user_information(self):
 
-        Users.user_database.clear(self)
+        Users.user_database.remove(self)
