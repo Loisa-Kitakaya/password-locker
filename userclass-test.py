@@ -51,6 +51,32 @@ class TestForClassUsers(unittest.TestCase):
         # close file
         file.close()
 
+    """testing if can read user profile from text file"""
+
+    def test_if_can_read_file(self):
+
+        # run test case
+        self.new_user.save_user_information()
+        self.new_user.write_user_info_to_file()
+
+        # open file
+        file = open("userinfo.txt", "r")
+
+        entry = file.readline()
+        word_in_entry = entry.split()
+
+        for word in word_in_entry:
+
+            if word == "Loisa" or word == "loisa123":
+
+                return word
+            else:
+
+                break
+
+        # close file
+        file.close()
+
     """clean up after test"""
 
     def tearDown(self):
