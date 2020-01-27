@@ -24,6 +24,15 @@ class TestForClassUsers(unittest.TestCase):
         self.new_user.save_user_information()
         self.assertEqual(len(Users.user_database), 1)
 
+    """testing if user profile can be deleted"""
+
+    def test_if_can_delete(self):
+
+        # run test case
+        self.new_user.save_user_information()
+        self.new_user.delete_user_information()
+        self.assertEqual(len(Users.user_database), 0)
+
     """clean up after test"""
 
     def tearDown(self):
