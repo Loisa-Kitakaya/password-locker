@@ -1,5 +1,6 @@
 import re
 
+
 class Credentials:
 
     # database to store all user information
@@ -28,7 +29,7 @@ class Credentials:
             + self.profile_name
             + " - "
             + self.account
-            + " username: "
+            + " password: "
             + self.profile_password
         )
         file.write(" | ")
@@ -59,7 +60,7 @@ class Credentials:
             for search in data.split():
 
                 if self.account_name in search:
-    
+
                     return search
 
             file.close()

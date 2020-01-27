@@ -16,7 +16,7 @@ class TestForClassUsers(unittest.TestCase):
     def test_if_can_save(self):
 
         # run test case
-        self.new_user.save_user_information("Loisa", "loisa123")
+        self.new_user.save_user_information()
 
         file = open("userinfo.txt", "r")
         data = file.readline()

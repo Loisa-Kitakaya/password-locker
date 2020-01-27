@@ -1,22 +1,32 @@
+import getpass
+import time
+import os
 from userclass import Users
 from credentialclass import Credentials
 from passwordgenclass import PasswordGenerator
 
 
 class PasswordLocker:
-
-    """Welcome messages"""
-
-    print("WELCOME TO PASSWORD-LOCKER!")
-    print("A safe place for all your online profiles")
-
     def main():
 
         while True:
 
+            print("Loading...")
+            time.sleep(2)
+
+            """Welcome messages"""
+            os.system("clear")
+
+            print("\nWELCOME TO PASSWORD-LOCKER!")
+            print("A safe place for all your online profiles")
+
+            print(
+                "\nLogin if you already have a password-locker account. \nSign up if you wish to use password-locker."
+            )
+
             print("")
-            print("Menu!")
-            print("-----")
+            print("Main menu!")
+            print("----------")
             print("1: Login \n2: SignUp \nx: Exit")
 
             """Begin"""
@@ -26,11 +36,17 @@ class PasswordLocker:
 
             # condition if
             if begin == "1":
+
+                print("Loading...")
+                time.sleep(2)
+
+                os.system("clear")
+
                 print("\nWelcome back!")
                 print("Enter your details to login...")
 
                 user_name = input("\nuser_name>>> ")
-                user_password = input("\nuser_password>>> ")
+                user_password = getpass.getpass(prompt="\nuser_password>>> ")
 
                 file = open("userinfo.txt", "r")
                 data = file.readline()
@@ -39,11 +55,20 @@ class PasswordLocker:
 
                 if user_name in data and user_password in data:
 
+                    print("Loading...")
+                    time.sleep(2)
+
+                    os.system("clear")
+
                     while True:
 
+                        print(
+                            "\nCreate profile for your online accounts. \nOr view already saved profiles."
+                        )
+
                         print("")
-                        print("Menu!")
-                        print("-----")
+                        print("Profile menu!")
+                        print("-------------")
                         print("1: view profiles \n2: create new profile \nx: Exit")
 
                         answer = input("\nProfileManager>>> ")
@@ -59,6 +84,7 @@ class PasswordLocker:
                                     profile_find
                                 )
                                 print("")
+                                print("Your saved profiles: \n")
                                 print(view_profile)
 
                             else:
@@ -67,6 +93,11 @@ class PasswordLocker:
                             continue
 
                         elif answer == "2":
+
+                            print(
+                                "\nCreate a profile by answering the following questions: \nWhat account does this profile belong to? \nWhat is the username for this account? \nWhat is the password for this account?"
+                            )
+
                             account = input("\naccount>>> ")
                             profile_name = input("\nprofile_name>>> ")
 
@@ -84,7 +115,9 @@ class PasswordLocker:
                                 )
                             elif answer == "n":
                                 print("\nEnter a password for your new account.")
-                                profile_password = input("\nprofile_password>>> ")
+                                profile_password = getpass.getpass(
+                                    prompt="\nprofile_password>>> "
+                                )
                             else:
                                 print("\nPlease enter valid options!")
 
@@ -108,6 +141,12 @@ class PasswordLocker:
                     continue
 
             elif begin == "2":
+
+                print("Loading...")
+                time.sleep(2)
+
+                os.system("clear")
+
                 print("\nDon't have an account yet?")
                 print("Enter a username for your new account.")
                 user_name = input("\nuser_name>>> ")
@@ -122,12 +161,12 @@ class PasswordLocker:
                     print("\nYour generated password is: " + user_password)
                 elif answer == "n":
                     print("\nEnter a password for your new account.")
-                    user_password = input("user_password>>> ")
+                    user_password = getpass.getpass(prompt="\nuser_password>>> ")
                 else:
                     print("\nPlease enter valid options!")
 
                 new_user = Users(user_name, user_password)
-                new_user.save_user_information(user_name, user_password)
+                new_user.save_user_information()
 
                 continue
 

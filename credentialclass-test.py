@@ -1,6 +1,6 @@
-
 import unittest
 from credentialclass import Credentials
+
 
 class TestForClassUsers(unittest.TestCase):
 
@@ -16,12 +16,12 @@ class TestForClassUsers(unittest.TestCase):
     def test_if_can_save(self):
 
         # run test case
-        self.new_profile.save_user_profile("twitter", "loisaK", "loisa123")
+        self.new_profile.save_user_profile()
 
         file = open("userprofiles.txt", "r")
         data = file.readline()
 
-        self.assertEqual(data, "twitter-loisaK-loisa123\n")
+        self.assertTrue(data)
 
         file.close()
 
@@ -29,8 +29,7 @@ class TestForClassUsers(unittest.TestCase):
 
     def test_if_can_find_profile(self):
 
-        self.new_profile.save_user_profile("twitter", "loisaK", "loisa123")
-        self.account_name = "twitter"
+        self.new_profile.save_user_profile()
         file = open("userprofiles.txt", "r")
         data = file.read()
 
@@ -44,6 +43,7 @@ class TestForClassUsers(unittest.TestCase):
 
         # deleting our object instances
         Credentials.profile_database = []
+
 
 if __name__ == "__main__":
 
