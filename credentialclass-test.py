@@ -21,7 +21,7 @@ class TestForClassUsers(unittest.TestCase):
     def test_if_can_save(self):
 
         # run test case
-        self.new_profile.save_user_information()
+        self.new_profile.save_user_profile()
         self.assertEqual(len(Credentials.profile_database), 1)
 
     """clean up after test"""
