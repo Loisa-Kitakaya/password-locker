@@ -72,7 +72,7 @@ class TestForClassUsers(unittest.TestCase):
                 return word
             else:
 
-                break
+                continue
 
         # close file
         file.close()
