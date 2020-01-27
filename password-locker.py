@@ -1,3 +1,4 @@
+import getpass
 from userclass import Users
 from credentialclass import Credentials
 from passwordgenclass import PasswordGenerator
@@ -15,8 +16,8 @@ class PasswordLocker:
         while True:
 
             print("")
-            print("Menu!")
-            print("-----")
+            print("Main menu!")
+            print("----------")
             print("1: Login \n2: SignUp \nx: Exit")
 
             """Begin"""
@@ -30,7 +31,7 @@ class PasswordLocker:
                 print("Enter your details to login...")
 
                 user_name = input("\nuser_name>>> ")
-                user_password = input("\nuser_password>>> ")
+                user_password = getpass.getpass(prompt="\nuser_password>>> ")
 
                 file = open("userinfo.txt", "r")
                 data = file.readline()
@@ -42,8 +43,8 @@ class PasswordLocker:
                     while True:
 
                         print("")
-                        print("Menu!")
-                        print("-----")
+                        print("Profile menu!")
+                        print("-------------")
                         print("1: view profiles \n2: create new profile \nx: Exit")
 
                         answer = input("\nProfileManager>>> ")
@@ -84,7 +85,9 @@ class PasswordLocker:
                                 )
                             elif answer == "n":
                                 print("\nEnter a password for your new account.")
-                                profile_password = input("\nprofile_password>>> ")
+                                profile_password = getpass.getpass(
+                                    prompt="\nprofile_password>>> "
+                                )
                             else:
                                 print("\nPlease enter valid options!")
 
@@ -122,12 +125,12 @@ class PasswordLocker:
                     print("\nYour generated password is: " + user_password)
                 elif answer == "n":
                     print("\nEnter a password for your new account.")
-                    user_password = input("user_password>>> ")
+                    user_password = getpass.getpass(prompt="\nuser_password>>> ")
                 else:
                     print("\nPlease enter valid options!")
 
                 new_user = Users(user_name, user_password)
-                new_user.save_user_information(user_name, user_password)
+                new_user.save_user_information()
 
                 continue
 
