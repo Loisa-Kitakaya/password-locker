@@ -22,3 +22,15 @@ class Users:
     def delete_user_information(self):
 
         Users.user_database.remove(self)
+
+    """method to write list to a textfile"""
+
+    def write_user_info_to_file(self):
+
+        # opening the file
+        file = open("userinfo.txt", "w")
+
+        file.write(str(Users.user_database))
+
+        # closing the file
+        file.close()
