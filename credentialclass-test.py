@@ -33,6 +33,50 @@ class TestForClassUsers(unittest.TestCase):
         self.new_profile.delete_user_profile()
         self.assertEqual(len(Credentials.profile_database), 0)
 
+    """testing if can write user profile to text file"""
+
+    def test_if_can_write_file(self):
+
+        # run test case
+        self.new_profile.save_user_profile()
+        self.new_profile.write_user_profile_to_file()
+
+        # open file
+        file = open("userprofile.txt", "r")
+
+        entry = file.readline()
+
+        print(entry)
+
+        # close file
+        file.close()
+
+    """testing if can read user profile from text file"""
+
+    def test_if_can_read_file(self):
+
+        # run test case
+        self.new_profile.save_user_profile()
+        self.new_profile.write_user_profile_to_file()
+
+        # open file
+        file = open("userprofile.txt", "r")
+
+        entry = file.readline()
+        word_in_entry = entry.split()
+
+        for word in word_in_entry:
+
+            if word == "twitter" or word == "loisaK" or word == "loisa123":
+
+                return word
+            else:
+
+                break
+
+        # close file
+        file.close()
+
     """clean up after test"""
 
     def tearDown(self):
