@@ -14,7 +14,7 @@ class PasswordLocker:
     # main app welcome function
     def welcome():
 
-        print("Loading...")
+        print("\nLoading...")
         time.sleep(2)
 
         """Welcome messages"""
@@ -37,7 +37,7 @@ class PasswordLocker:
     # main app login function
     def account_login():
 
-        print("Loading...")
+        print("\nLoading...")
         time.sleep(2)
 
         os.system("clear")
@@ -45,9 +45,9 @@ class PasswordLocker:
         print("\nWelcome back!")
         print("Enter your details to login...")
 
-        user_name = input("\nuser_name>>> ")
+        user_name = input("\nuser_name >>> ")
         user_password = getpass.getpass(
-            prompt="\nuser_password>>> ")
+            prompt="\nuser_password >>> ")
 
         file = open("userinfo.txt", "r")
         data = file.readline()
@@ -65,30 +65,29 @@ class PasswordLocker:
     # main app signin funcion
     def account_signin():
 
-        print("Loading...")
+        print("\nLoading...")
         time.sleep(2)
 
         os.system("clear")
 
         print("\nDon't have an account yet?")
         print("Enter a username for your new account.")
-        user_name = input("\nuser_name>>> ")
+        user_name = input("\nuser_name >>> ")
 
         print("\nDo you want a generated password? \ny: Yes \nn: No")
-        answer = input("\nanswer>>> ")
+        answer = input("\nanswer? >>> ")
 
         # condition if
         if answer == "y":
 
             user_password = PasswordGenerator.generate_password()
 
-            print("\nYour generated password is: " + user_password)
+            # print("\nYour generated password is: " + user_password)
 
         elif answer == "n":
 
             print("\nEnter a password for your new account.")
-            user_password = getpass.getpass(
-                prompt="\nuser_password>>> ")
+            user_password = input("\nuser_password >>> ")
 
         else:
 
@@ -97,10 +96,12 @@ class PasswordLocker:
         new_user = Users(user_name, user_password)
         new_user.save_user_information()
 
+        print("your username: " + user_name + "\nYour password: " + user_password)
+
     # profile manager welcome function
     def profile_manager_welcome():
 
-        print("Loading...")
+        print("\nLoading...")
         time.sleep(2)
 
         os.system("clear")
@@ -121,47 +122,49 @@ class PasswordLocker:
             "\nCreate a profile by answering the following questions: \nWhat account does this profile belong to? \nWhat is the username for this account? \nWhat is the password for this account?"
         )
 
-        account = input("\naccount>>> ")
-        profile_name = input("\nprofile_name>>> ")
+        account = input("\naccount >>> ")
+        account_username = input("\naccount_username >>> ")
 
         print(
             "\nDo you want a generated password? \ny: Yes \nn: No"
         )
-        answer = input("\nanswer>>> ")
+        answer = input("\nanswer? >>> ")
 
         # condition if
         if answer == "y":
-            profile_password = PasswordGenerator.generate_password()
 
-            print(
-                "\nYour generated password is: " + profile_password
-            )
+            account_password = PasswordGenerator.generate_password()
+
         elif answer == "n":
+
             print(
                 "\nEnter a password for your new account.")
-            profile_password = getpass.getpass(
-                prompt="\nprofile_password>>> "
+            account_password = getpass.getpass(
+                prompt="\n account_password >>> "
             )
+
         else:
+
             print("\nPlease enter valid options!")
 
-            new_cred = Credentials(
-                account, profile_name, profile_password
-            )
-            new_cred = Credentials.save_user_profile()
+        new_cred = Credentials(
+            account, account_username, account_password
+        )
+        new_cred.save_user_profile()
+
+        print("Profile for: " + "\n\naccount = " + account + "\n\nusername = " + account_username + "\n\npassword = " + account_password)
 
     # find profile function
     def find_profile():
 
         print("\nFind your profiles? \ny: Yes \nn: No")
 
-        profile_find = input("\nprofile_find>>> ")
+        profile_find = input("\nfind_profile? >>> ")
 
         if profile_find == "y":
 
-            view_profile = Credentials.view_user_profile(
-                profile_find
-            )
+            view_profile = Credentials.view_user_profile(profile_find)
+
             print("")
             print("Your saved profiles: \n")
             print(view_profile)
@@ -177,15 +180,35 @@ class PasswordLocker:
 
             PasswordLocker.profile_manager_welcome()
 
-            answer = input("\nProfileManager>>> ")
+            answer = input("\nprofilemanager >>> ")
 
             if answer == "1":
 
-                PasswordLocker.create_profile()
+                while True:
+
+                    PasswordLocker.create_profile()
+
+                    continue_browse = input("\ncontinue? | any key then hit 'Enter' >>> ")
+
+                    if continue_browse == True:
+
+                        break
+
+                    break
 
             elif answer == "2":
 
-                PasswordLocker.find_profile()
+                while True:
+
+                    PasswordLocker.find_profile()
+
+                    continue_browse = input("\ncontinue? | any key then hit 'Enter' >>> ")
+
+                    if continue_browse == True:
+
+                        break
+
+                    break
 
             elif answer == "x":
 
@@ -205,16 +228,36 @@ class PasswordLocker:
             PasswordLocker.welcome()
 
             # take user input
-            begin = input("\nPasswordLocker>>> ")
+            begin = input("\npasswordlocker >>> ")
 
             # condition if
             if begin == "1":
 
-                PasswordLocker.account_login()
+                while True:
+
+                    PasswordLocker.account_login()
+
+                    continue_browse = input("\ncontinue? | any key then hit 'Enter' >>> ")
+
+                    if continue_browse == True:
+
+                        break
+
+                    break
 
             elif begin == "2":
 
-                PasswordLocker.account_signin()
+                while True:
+
+                    PasswordLocker.account_signin()
+
+                    continue_browse = input("\ncontinue? | any key then hit 'Enter' >>> ")
+
+                    if continue_browse == True:
+
+                        break
+
+                    break
 
             elif begin == "x":
 
